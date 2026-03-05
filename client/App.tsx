@@ -14,6 +14,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import BusinessClubQuestionnaire from "./pages/BusinessClubQuestionnaire";
+import ArticleDetail from "./pages/ArticleDetail";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ export default function App() {
           <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/magazine" element={<Magazine />} />
+          <Route path="/magazine/article/:slug" element={<ArticleDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/business-club" element={<BusinessClub />} />
           <Route path="/events" element={<Events />} />

@@ -1,128 +1,186 @@
 import Navigation from "@/components/Navigation";
 import { cn } from "@/lib/utils";
-import { Award, Users, Target, Heart } from "lucide-react";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
+      {/* Hero / Welcome Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <h1 className={cn(
-            "font-display text-5xl md:text-6xl font-bold mb-6",
+            "font-display text-5xl md:text-6xl font-bold mb-8",
             "text-foreground"
           )}>
-            About Spa &amp; Salon Africa
+            Welcome to Spa &amp; Salon Africa
           </h1>
           <p
             className={cn(
-              "text-foreground/70 text-lg md:text-xl",
-              "font-light max-w-2xl mx-auto"
+              "text-foreground/70 text-base md:text-lg mb-6",
+              "font-light leading-relaxed"
             )}
           >
-            Empowering salon, spa &amp; barbershop business owners in Africa
-            with the tools, knowledge and community they need to thrive.
+            The spa, salon and barbershop industry is one of the most dynamic,
+            customer-focused and fast-growing sectors in Africa. It&apos;s
+            creative. It&apos;s powerful. It&apos;s deeply personal.
+          </p>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg mb-6",
+              "font-light leading-relaxed"
+            )}
+          >
+            But behind every flawless fade, glowing facial and perfect weave is
+            a business owner navigating staffing challenges, rising costs,
+            marketing demands, taxes, customer retention and cash flow
+            pressures.
+          </p>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg font-medium",
+              "leading-relaxed"
+            )}
+          >
+            Spa &amp; Salon Africa exists to support the business side of
+            things.
           </p>
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* What We Do Section */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h2
-                className={cn(
-                  "font-display text-3xl md:text-4xl font-bold mb-6",
-                  "text-foreground"
-                )}
-              >
-                Our Story
-              </h2>
-              <p
-                className={cn(
-                  "text-foreground/70 text-base md:text-lg mb-4",
-                  "font-light leading-relaxed"
-                )}
-              >
-                Spa &amp; Salon Africa was created for the people who keep the
-                continent looking and feeling good: salon, spa &amp; barbershop
-                owners and their teams.
-              </p>
-              <p
-                className={cn(
-                  "text-foreground/70 text-base md:text-lg",
-                  "font-light leading-relaxed"
-                )}
-              >
-                We saw passionate entrepreneurs struggling with pricing,
-                marketing, staff and growth — so we built a platform that
-                focuses on business, not just beauty. Today we bring together
-                African heritage, modern strategy and a powerful owner
-                community.
-              </p>
-            </div>
-            <div className="bg-secondary rounded-lg h-64 flex items-center justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1765607476260-db2f5e310ea6?q=80&w=1064&auto=format&fit=crop"
-                alt="Salon interior"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
+          <h2
+            className={cn(
+              "font-display text-3xl md:text-4xl font-bold mb-8",
+              "text-foreground"
+            )}
+          >
+            What We Do
+          </h2>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg mb-12",
+              "font-light leading-relaxed"
+            )}
+          >
+            Spa &amp; Salon Africa is a community-driven platform dedicated to
+            empowering spa, salon and barbershop owners with the tools,
+            knowledge and support they need to build sustainable, profitable
+            businesses.
+          </p>
+          <p className="text-foreground/80 font-medium mb-6">
+            We provide:
+          </p>
+          <ul className="space-y-6">
+            {[
+              {
+                title: "Business Education & Training",
+                desc: "Through webinars, workshops, interviews and expert-led sessions, we tackle real industry challenges. We cover everything from pricing and profitability to staffing systems, customer experience and financial management.",
+              },
+              {
+                title: "The Business Club",
+                desc: "A growing community where owners connect, learn, network and solve problems together. We recognised the challenges of building a business in isolation and set out to build a supportive community.",
+              },
+              {
+                title: "Marketing & Branding Support",
+                desc: "We help beauty businesses position themselves strategically through consulting, digital marketing services and content creation that attracts the right clients.",
+              },
+              {
+                title: "Industry Conversations",
+                desc: "Through interviews with leading founders, coaches, product manufacturers and strategists, we bring practical insights directly to owners.",
+              },
+              {
+                title: "Media & Advertising Platform",
+                desc: "Via our social media platforms, newsletter and quarterly magazine, we spotlight businesses, brands and opportunities within the industry.",
+              },
+            ].map((item) => (
+              <li key={item.title} className="flex gap-4">
+                <span className="text-black font-bold flex-shrink-0">▸</span>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-foreground/70 text-sm md:text-base font-light leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Why Community Matters */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-secondary/20">
         <div className="max-w-4xl mx-auto">
           <h2
             className={cn(
-              "font-display text-3xl md:text-4xl font-bold mb-12 text-center",
+              "font-display text-3xl md:text-4xl font-bold mb-6",
               "text-foreground"
             )}
           >
-            Our Values
+            Why Community Matters
           </h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Award,
-                title: "Excellence",
-                description: "Committed to world-class standards in education, strategy and support."
-              },
-              {
-                icon: Heart,
-                title: "Authenticity",
-                description: "Rooted in African realities, culture and markets — not imported theory."
-              },
-              {
-                icon: Users,
-                title: "Community",
-                description: "Owners grow faster together through shared wins, challenges and ideas."
-              },
-              {
-                icon: Target,
-                title: "Innovation",
-                description: "Blending timeless business principles with modern tools and technology."
-              }
-            ].map((value) => (
-              <div key={value.title} className="text-center">
-                <value.icon className="w-12 h-12 mx-auto mb-4 text-black" />
-                <h3 className={cn(
-                  "font-display text-lg font-semibold mb-2",
-                  "text-foreground"
-                )}>
-                  {value.title}
-                </h3>
-                <p className="text-foreground/60 text-sm font-light">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg mb-4",
+              "font-light leading-relaxed"
+            )}
+          >
+            Running a spa, salon or barbershop can be tough. Spa &amp; Salon
+            Africa creates a space where owners can learn from each other,
+            collaborate, network and grow not as competitors, but as a thriving
+            ecosystem.
+          </p>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg",
+              "font-light leading-relaxed"
+            )}
+          >
+            We believe that when one business grows sustainably, the entire
+            industry becomes stronger.
+          </p>
+        </div>
+      </section>
+
+      {/* Our Vision */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className={cn(
+              "font-display text-3xl md:text-4xl font-bold mb-6",
+              "text-foreground"
+            )}
+          >
+            Our Vision
+          </h2>
+          <p
+            className={cn(
+              "text-foreground/70 text-base md:text-lg mb-6",
+              "font-light leading-relaxed"
+            )}
+          >
+            To elevate African spas, salons and barbershops into globally
+            respected, profitable and professionally run enterprises powered by
+            knowledge, systems and community.
+          </p>
+          <p
+            className={cn(
+              "text-foreground/80 text-base md:text-lg font-medium",
+              "leading-relaxed"
+            )}
+          >
+            If you own a spa, salon or barbershop, you are part of the movement.
+          </p>
+          <p
+            className={cn(
+              "font-display text-xl md:text-2xl font-bold mt-10",
+              "text-foreground"
+            )}
+          >
+            Welcome to Spa &amp; Salon Africa.
+          </p>
         </div>
       </section>
 

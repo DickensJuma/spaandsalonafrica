@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 import { Calendar, User, ArrowRight } from "lucide-react";
 
 export default function Magazine() {
@@ -16,6 +17,7 @@ export default function Magazine() {
   const articles = [
     {
       id: 1,
+      slug: "marketing-playbook",
       title: "Marketing Playbook for African Salons",
       excerpt:
         "A simple weekly content plan to stay visible online and attract ideal clients.",
@@ -27,6 +29,7 @@ export default function Magazine() {
     },
     {
       id: 2,
+      slug: "pricing-with-confidence",
       title: "Pricing with Confidence in Any City",
       excerpt:
         "How to charge what you’re worth while staying competitive in your local market.",
@@ -38,6 +41,7 @@ export default function Magazine() {
     },
     {
       id: 3,
+      slug: "hiring-keeping-team",
       title: "Hiring & Keeping the Right Team",
       excerpt:
         "Practical advice for recruiting, onboarding and retaining staff who grow with you.",
@@ -49,6 +53,7 @@ export default function Magazine() {
     },
     {
       id: 4,
+      slug: "building-brand-clients-talk-about",
       title: "Building a Brand Clients Talk About",
       excerpt:
         "Turn your salon, spa or barbershop into a local love brand clients proudly recommend.",
@@ -60,6 +65,7 @@ export default function Magazine() {
     },
     {
       id: 5,
+      slug: "money-management-beauty-entrepreneurs",
       title: "Money Management for Beauty Entrepreneurs",
       excerpt:
         "Simple financial habits to manage cash flow, profit and growth without an accounting degree.",
@@ -71,6 +77,7 @@ export default function Magazine() {
     },
     {
       id: 6,
+      slug: "expanding-one-location-many",
       title: "Expanding from One Location to Many",
       excerpt:
         "Lessons from African owners who successfully opened second and third branches.",
@@ -172,13 +179,16 @@ export default function Magazine() {
                 </div>
               </div>
               
-              <button className={cn(
-                "inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold",
-                "bg-black text-white hover:bg-black/90",
-                "transition-colors duration-200"
-              )}>
+              <Link
+                to="/magazine/article/from-chair-to-ceo"
+                className={cn(
+                  "inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold",
+                  "bg-black text-white hover:bg-black/90",
+                  "transition-colors duration-200"
+                )}
+              >
                 Read Full Article <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -196,9 +206,13 @@ export default function Magazine() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article) => (
-              <article
+              <Link
                 key={article.id}
-                className="group cursor-pointer rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all duration-300"
+                to={`/magazine/article/${article.slug}`}
+                className="block group"
+              >
+              <article
+                className="rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all duration-300 cursor-pointer"
               >
                 {/* Image */}
                 <div className="relative overflow-hidden h-56 bg-gray-200">
@@ -248,6 +262,7 @@ export default function Magazine() {
                   </div>
                 </div>
               </article>
+              </Link>
             ))}
           </div>
         </div>

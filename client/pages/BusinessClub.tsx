@@ -9,24 +9,41 @@ export default function BusinessClub() {
 
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black/5">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <h1 className={cn(
-            "font-display text-5xl md:text-6xl font-bold mb-6",
+            "font-display text-5xl md:text-6xl font-bold mb-8",
             "text-foreground"
           )}>
-            Business Club for Owners
+            The Spa &amp; Salon Africa Business Club
           </h1>
           <p className={cn(
-            "text-foreground/70 text-lg md:text-xl",
-            "font-light max-w-2xl mx-auto"
+            "text-foreground/70 text-base md:text-lg mb-6",
+            "font-light leading-relaxed"
           )}>
-            A community and resource hub built specifically for salon, spa &
-            barbershop business owners across Africa.
+            Running a spa, salon or barbershop can sometimes feel like
+            you&apos;re figuring everything out alone. One day it&apos;s staffing
+            drama, the next it&apos;s cash flow stress, slow bookings, marketing
+            confusion or tax questions.
+          </p>
+          <p className={cn(
+            "text-foreground/70 text-base md:text-lg mb-6",
+            "font-light leading-relaxed"
+          )}>
+            The Spa &amp; Salon Africa Business Club was created so you don&apos;t
+            have to navigate it all by yourself.
+          </p>
+          <p className={cn(
+            "text-foreground/80 text-base md:text-lg font-medium",
+            "leading-relaxed"
+          )}>
+            This is a supportive community of spa, salon and barbershop owners
+            who are serious about building profitable, well-run businesses while
+            still enjoying the journey.
           </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Inside the Business Club */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2
@@ -35,7 +52,7 @@ export default function BusinessClub() {
               "text-foreground"
             )}
           >
-            Membership Benefits
+            Inside the Business Club, you can expect:
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -93,6 +110,14 @@ export default function BusinessClub() {
               </div>
             ))}
           </div>
+          <p className={cn(
+            "text-foreground/80 text-center text-lg md:text-xl mt-12 font-medium",
+            "leading-relaxed max-w-2xl mx-auto"
+          )}>
+            If you&apos;re ready to move from surviving to scaling and you want
+            to do it alongside other ambitious beauty business owners, the Spa
+            &amp; Salon Africa Business Club is for you.
+          </p>
         </div>
       </section>
 

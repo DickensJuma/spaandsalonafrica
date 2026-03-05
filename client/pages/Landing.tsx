@@ -2,7 +2,8 @@ import Navigation from "@/components/Navigation";
 import { cn } from "@/lib/utils";
 import { ContactSection } from "@/components/ContactSection";
 import MarketingBanner from "@/components/MarketingBanner";
-import { Sparkles, Scissors, Droplet, Users, ArrowRight, Star, Calendar, Clock, Video, X, Loader2 } from "lucide-react";
+import FeaturedSection from "@/components/FeaturedSection";
+import {  ArrowRight, Star, Calendar, Clock, Video, X, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -97,7 +98,7 @@ export default function Landing() {
       <Navigation />
 
       {/* Webinar Event Banner */}
-      <section className="bg-gradient-to-r from-black via-black/95 to-black/90 text-white py-6 px-4 sm:px-6 lg:px-8 border-b-4 border-white/20">
+      {/* <section className="bg-gradient-to-r from-black via-black/95 to-black/90 text-white py-6 px-4 sm:px-6 lg:px-8 border-b-4 border-white/20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4 flex-1">
@@ -143,15 +144,28 @@ export default function Landing() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Hero Section */}
-      <section className="py-24 md:py-40 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black/5 to-transparent">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Hero Copy */}
-            <div className="text-center md:text-left space-y-8">
-              <div className="mb-6 inline-block">
+      {/* Hero Section - Three Columns (ELLE-inspired compact layout) */}
+      <section className="py-10 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-start">
+            {/* Column 1: Hero Image (left) */}
+            <div className="md:col-span-5 order-2 md:order-1">
+              <div className="relative h-[340px] sm:h-[420px] md:h-[480px] lg:h-[520px] rounded-lg overflow-hidden shadow-lg group">
+                <img
+                  src="https://images.unsplash.com/photo-1643543156023-de1549751414?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="African salon and barbershop owners collaborating"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="eager"
+                />
+                
+              </div>
+            </div>
+
+            {/* Column 2: Hero Copy */}
+            <div className="md:col-span-4 order-1 md:order-2 flex flex-col justify-center py-6 md:py-0 md:pl-2 lg:pl-6 text-center md:text-left space-y-4">
+              <div className="inline-block">
                 <span
                   className={cn(
                     "px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest",
@@ -165,8 +179,8 @@ export default function Landing() {
 
               <h1
                 className={cn(
-                  "font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.15]",
-                  "text-foreground tracking-tight"
+                  "font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-[1.1]",
+                  "text-foreground tracking-tight max-w-lg md:max-w-none"
                 )}
               >
                 Empowering Beauty Business
@@ -176,30 +190,30 @@ export default function Landing() {
 
               <p
                 className={cn(
-                  "text-foreground/70 text-lg md:text-xl lg:text-2xl max-w-3xl md:max-w-none mx-auto md:mx-0 mb-10",
+                  "text-foreground/70 text-base md:text-lg max-w-xl",
                   "font-light leading-relaxed"
                 )}
               >
                 Business tips | Marketing | Growth | Community
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                 <Link
                   to="/business-club"
                   className={cn(
-                    "px-10 py-5 rounded-sm font-semibold text-lg",
+                    "px-6 py-3 rounded-sm font-semibold text-sm",
                     "bg-black text-white hover:bg-black/90",
                     "transition-all duration-300 hover:scale-105 hover:shadow-xl",
-                    "text-center active:scale-95"
+                    "text-center active:scale-95 inline-flex items-center justify-center gap-2"
                   )}
                 >
-                  Join the Business Club{" "}
-                  <ArrowRight className="w-5 h-5 ml-2 inline" />
+                  Join the Business Club
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/services"
                   className={cn(
-                    "px-10 py-5 rounded-sm font-semibold text-lg",
+                    "px-6 py-3 rounded-sm font-semibold text-sm",
                     "bg-white text-black hover:bg-black/5",
                     "transition-all duration-300 border-2 border-black",
                     "text-center hover:shadow-lg active:scale-95"
@@ -208,128 +222,118 @@ export default function Landing() {
                   Explore Growth Programs
                 </Link>
               </div>
-
-              <div className="text-base text-foreground/60 font-light">
-                Supporting owners across Africa with practical tools and community.
-              </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative h-96 md:h-[550px] lg:h-[650px] rounded-lg overflow-hidden shadow-2xl group">
-              <img
-                src="https://images.unsplash.com/photo-1643543156023-de1549751414?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="African salon and barbershop owners collaborating"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="eager"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Services */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className={cn(
-              "font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6",
-              "text-foreground tracking-tight"
-            )}>
-              Core Pillars of Growth
-            </h2>
-            <p className={cn(
-              "text-foreground/60 text-xl md:text-2xl max-w-3xl mx-auto",
-              "font-light leading-relaxed"
-            )}>
-              Everything we do is built around helping African salon, spa &amp;
-              barbershop owners grow stronger businesses.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Scissors,
-                title: "Business",
-                description:
-                  "Foundations, pricing, operations and leadership for owners and managers.",
-                items: [
-                  "Business fundamentals",
-                  "Pricing & profit",
-                  "Systems & operations",
-                ],
-              },
-              {
-                icon: Sparkles,
-                title: "Marketing",
-                description:
-                  "Practical marketing that works in African cities, towns and neighborhoods.",
-                items: [
-                  "Social media strategy",
-                  "Client retention & loyalty",
-                  "Brand & reputation",
-                ],
-              },
-              {
-                icon: Droplet,
-                title: "Growth",
-                description:
-                  "Tools and support to help you move from survival to stability to expansion.",
-                items: [
-                  "New branch planning",
-                  "Membership & packages",
-                  "Revenue diversification",
-                ],
-              },
-              {
-                icon: Users,
-                title: "Community",
-                description:
-                  "A continent-wide network of beauty entrepreneurs who share, learn and win together.",
-                items: [
-                  "Owner community",
-                  "Events & meetups",
-                  "Peer support",
-                ],
-              }
-            ].map((service) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.title}
-                  className={cn(
-                    "p-8 rounded-lg border-2 transition-all duration-300",
-                    "hover:shadow-2xl hover:border-black hover:-translate-y-2",
-                    "bg-white border-black/10 cursor-pointer group"
-                  )}
-                >
-                  <Icon className="w-12 h-12 text-black mb-6 transition-transform duration-300 group-hover:scale-110" />
-                  <h3 className={cn(
-                    "font-display text-2xl font-bold mb-3",
-                    "text-foreground"
-                  )}>
-                    {service.title}
-                  </h3>
-                  <p className={cn(
-                    "text-foreground/60 text-base mb-6",
-                    "font-light leading-relaxed"
-                  )}>
-                    {service.description}
-                  </p>
-                  <ul className="space-y-3">
-                    {service.items.map((item) => (
-                      <li key={item} className="text-foreground/60 flex items-center gap-3 text-sm font-light">
-                        <span className="w-2 h-2 rounded-full bg-black flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+            {/* Column 3: Latest Event, Article, Webinar */}
+            <div className="md:col-span-3 order-3 flex flex-col gap-3 md:pl-2">
+              {/* Latest Event */}
+              <Link
+                to="/events"
+                className={cn(
+                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
+                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
+                )}
+              >
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&auto=format&fit=crop"
+                    alt="The Business Breakfast event"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-              );
-            })}
+                <div className="p-4 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Calendar className="w-4 h-4 text-black flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                      Latest Event
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
+                    The Business Breakfast
+                  </h3>
+                  <p className="text-xs text-foreground/60 font-light mb-2">
+                    March 15, 2026 • Online Event
+                  </p>
+                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
+                    View event <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Latest Article */}
+              <Link
+                to="/magazine"
+                className={cn(
+                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
+                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
+                )}
+              >
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1658092967527-4e140d9bdaea?q=80&w=600&auto=format&fit=crop"
+                    alt="Spa, salon or barbershop decor 2026"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Star className="w-4 h-4 text-black flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                      Latest Article
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
+                    What your spa, salon or barbershop decor should look like in 2026
+                  </h3>
+                  <p className="text-xs text-foreground/60 font-light mb-2">
+                    Business Tips • March 15, 2026
+                  </p>
+                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
+                    Read article <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Upcoming Webinar */}
+              <button
+                type="button"
+                onClick={handleOpenWebinarModal}
+                className={cn(
+                  "flex w-full text-left overflow-hidden rounded-lg border border-black/10 bg-white",
+                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
+                )}
+              >
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop"
+                    alt="The Bottom Line: Spa, Salon & Barbershop Profitability webinar"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Video className="w-4 h-4 text-black flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                      Upcoming Webinar
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
+                    The Bottom Line: Spa, Salon & Barbershop Profitability
+                  </h3>
+                  <p className="text-xs text-foreground/60 font-light mb-2">
+                    3:00 PM EAT • KSh 2,500
+                  </p>
+                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
+                    Buy ticket <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </section>
+
+     
 
       {/* Why Choose Us */}
       <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-black/5">
@@ -414,7 +418,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className={cn(
@@ -479,10 +483,9 @@ export default function Landing() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Marketing Banner - Promote Other Businesses */}
-      <MarketingBanner
+      </section> */}
+        {/* Marketing Banner - Promote Other Businesses */}
+        <MarketingBanner
         businessName="Spark — Salon Management System"
         description="Spark helps salons, barbershops, spas, and beauty businesses run smarter with bookings, POS, staff, inventory, and analytics in one platform."
         imageUrl="/assets/spark_ad.webp"
@@ -490,9 +493,72 @@ export default function Landing() {
         ctaUrl="https://spark.co.ke/"
         backgroundColor="bg-white"
       />
+       {/* Featured - Article Slider */}
+       <FeaturedSection
+        articles={[
+          {
+            id: 1,
+            title: "From Chair to CEO: Systems that Free Up the Owner",
+            excerpt:
+              "Discover the key systems that allow African salon, spa & barbershop owners to work on the business, not in it.",
+            image: "https://images.unsplash.com/photo-1658092967527-4e140d9bdaea?q=80&w=2070&auto=format&fit=crop",
+            author: "Amara Okafor",
+            date: "March 15, 2026",
+            category: "Business Tips",
+            readTime: "6 min read",
+          },
+          {
+            id: 2,
+            title: "Marketing Playbook for African Salons",
+            excerpt:
+              "A simple weekly content plan to stay visible online and attract ideal clients.",
+            image: "https://images.unsplash.com/photo-1652095319417-4bf8a0de1a3d?q=80&w=927&auto=format&fit=crop",
+            author: "Zainab Hassan",
+            date: "March 12, 2026",
+            category: "Marketing",
+            readTime: "5 min read",
+          },
+          {
+            id: 3,
+            title: "Pricing with Confidence in Any City",
+            excerpt:
+              "How to charge what you're worth while staying competitive in your local market.",
+            image: "https://images.unsplash.com/photo-1761233585177-73b12a61ea4d?q=80&w=986&auto=format&fit=crop",
+            author: "Kwame Asante",
+            date: "March 10, 2026",
+            category: "Revenue",
+            readTime: "6 min read",
+          },
+          {
+            id: 4,
+            title: "Hiring & Keeping the Right Team",
+            excerpt:
+              "Practical advice for recruiting, onboarding and retaining staff who grow with you.",
+            image: "https://images.unsplash.com/photo-1688302583595-5482083f6843?q=80&w=1543&auto=format&fit=crop",
+            author: "Dr. Naledi Mvubu",
+            date: "March 8, 2026",
+            category: "Team",
+            readTime: "7 min read",
+          },
+          {
+            id: 5,
+            title: "Building a Brand Clients Talk About",
+            excerpt:
+              "Turn your salon, spa or barbershop into a local love brand clients proudly recommend.",
+            image: "https://plus.unsplash.com/premium_photo-1729702169709-87c1e287a2a5?q=80&w=2070&auto=format&fit=crop",
+            author: "Fatima Diallo",
+            date: "March 5, 2026",
+            category: "Branding",
+            readTime: "8 min read",
+          },
+        ]}
+      />
+
+    
+      
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-black/5">
+      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className={cn(
             "font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-8",

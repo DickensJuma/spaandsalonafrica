@@ -33,28 +33,33 @@ export default function MarketingBanner({
 }: MarketingBannerProps) {
   return (
     <section className={cn(
-      "w-full py-12 md:py-16 px-4 sm:px-6 lg:px-8",
-      "border-t border-b border-black/10",
+      "w-full py-24 md:py-32 px-4 sm:px-6 lg:px-8",
       backgroundColor
     )}>
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          {/* Business Image (optional) */}
+      <div className="max-w-7xl mx-auto">
+        <div className={cn(
+          "grid gap-16 items-center",
+          imageUrl ? "md:grid-cols-2" : "max-w-3xl mx-auto"
+        )}>
+          {/* Business Image (optional) - Why Choose Us style */}
           {imageUrl && (
-            <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden shadow-lg bg-white">
+            <div className="order-2 md:order-1">
+              <div className="rounded-lg overflow-hidden shadow-2xl group">
                 <img
                   src={imageUrl}
                   alt={businessName}
-                  className="w-full h-full object-cover"
+                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
           )}
 
-          {/* Content */}
-          <div className="flex-1 text-center md:text-left">
-            <div className="mb-2">
+          {/* Content - Why Choose Us style */}
+          <div className={cn(
+            "order-1 md:order-2 space-y-8",
+            imageUrl ? "" : "text-center"
+          )}>
+            <div>
               <span className={cn(
                 "text-xs uppercase tracking-widest font-semibold",
                 "text-foreground/50"
@@ -62,16 +67,17 @@ export default function MarketingBanner({
                 Partner Business
               </span>
             </div>
-            <h3 className={cn(
-              "font-display text-2xl md:text-3xl font-bold mb-3",
+            <h2 className={cn(
+              "font-display text-5xl md:text-6xl font-bold",
+              "tracking-tight",
               textColor
             )}>
               {businessName}
-            </h3>
+            </h2>
             <p className={cn(
-              "text-foreground/70 text-base md:text-lg mb-6",
-              "font-light leading-relaxed max-w-2xl",
-              "mx-auto md:mx-0"
+              "text-foreground/70 text-lg md:text-xl",
+              "font-light leading-relaxed",
+              imageUrl ? "" : "mx-auto"
             )}>
               {description}
             </p>
@@ -81,15 +87,15 @@ export default function MarketingBanner({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold",
+                  "inline-flex items-center gap-2 mt-10 px-8 py-4 rounded-sm font-semibold text-lg",
                   "bg-black text-white hover:bg-black/90",
-                  "transition-all duration-300 hover:scale-105 hover:shadow-lg",
+                  "transition-all duration-300 hover:scale-105 hover:shadow-xl",
                   "active:scale-95"
                 )}
                 aria-label={`Visit ${businessName} website`}
               >
                 {ctaText}
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                <ExternalLink className="w-5 h-5" aria-hidden="true" />
               </a>
             )}
           </div>
