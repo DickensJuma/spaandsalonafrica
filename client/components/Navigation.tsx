@@ -58,14 +58,14 @@ export default function Navigation(_props: NavigationProps = {}) {
           {/* Center: Logo */}
           <div className="flex justify-center">
             <Link to="/" className="text-center">
-              {/* <img
-                src="/assets/spaandsalonafricalogo.jpeg"
+              <img
+                src="/assets/logo.jpeg"
                 alt="SPA & SALON AFRICA"
-                className="h-12 md:h-14 object-contain"
-              /> */}
-                 <div className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight">
+                className="h-24 md:h-32 object-contain"
+              />
+                 {/* <div className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight">
                 SPA & SALON AFRICA
-              </div>
+              </div> */}
             </Link>
           </div>
 
@@ -85,9 +85,9 @@ export default function Navigation(_props: NavigationProps = {}) {
           <div className="flex justify-center">
             <Link to="/" className="text-center">
               <img
-                src="/assets/spaandsalonafricalogo.jpeg"
+                src="/assets/logo.jpeg"
                 alt="SPA & SALON AFRICA"
-                className="h-10 object-contain"
+                className="h-18 md:h-24 object-contain"
               />
             </Link>
           </div>
