@@ -28,7 +28,6 @@ export const handleContact: RequestHandler = async (req, res) => {
       } as ContactFormResponse);
     }
 
-    // Save to database (if connected)
     try {
       const contact = new Contact({
         name: body.name,
