@@ -53,7 +53,7 @@ jobs:
       - name: Prepare SSH key
         run: |
           echo "${{ secrets.SERVER_SSH_KEY }}" > "$GITHUB_WORKSPACE/deploy_key"
-          chmod 600 "$GITHUB_WORKSPACE/deploy_key"
+          chmod 644 "$GITHUB_WORKSPACE/deploy_key"
 
       - name: Copy docker-compose to server
         uses: appleboy/scp-action@v0.1.7
