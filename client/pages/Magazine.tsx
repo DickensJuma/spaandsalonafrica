@@ -5,23 +5,35 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 
 export default function Magazine() {
   const featuredArticle = {
-    title: "From Chair to CEO: Systems that Free Up the Owner",
+    title: "Why professional products are essential for business growth",
     excerpt:
-      "Discover the key systems that allow African salon, spa & barbershop owners to work on the business, not in it.",
-    image: "https://images.unsplash.com/photo-1658092967527-4e140d9bdaea?q=80&w=2070&auto=format&fit=crop",
-    author: "Amara Okafor",
+      "How the right professional products protect your reputation, improve client results and unlock sustainable growth.",
+    image: "/assets/2.jpg",
+    author: "Spa & Salon Africa Editorial Team",
     date: "March 15, 2026",
-    category: "Business Tips"
+    category: "Business Strategy & Management",
   };
 
   const articles = [
+    {
+      id: 0,
+      slug: "why-professional-products-essential-growth",
+      title: "Why professional products are essential for business growth",
+      excerpt:
+        "Why retailing and using professional products is a non‑negotiable foundation for client trust, referrals and revenue.",
+      image: "/assets/2.jpg",
+      author: "Spa & Salon Africa Editorial Team",
+      date: "March 15, 2026",
+      category: "Business Strategy & Management",
+      readTime: "7 min read",
+    },
     {
       id: 1,
       slug: "marketing-playbook",
       title: "Marketing Playbook for African Salons",
       excerpt:
         "A simple weekly content plan to stay visible online and attract ideal clients.",
-      image: "https://images.unsplash.com/photo-1652095319417-4bf8a0de1a3d?q=80&w=927&auto=format&fit=crop",
+      image: "/assets/28.jpg",
       author: "Zainab Hassan",
       date: "March 12, 2026",
       category: "Marketing",
@@ -33,10 +45,10 @@ export default function Magazine() {
       title: "Pricing with Confidence in Any City",
       excerpt:
         "How to charge what you’re worth while staying competitive in your local market.",
-      image: "https://images.unsplash.com/photo-1761233585177-73b12a61ea4d?q=80&w=986&auto=format&fit=crop",
+      image: "/assets/14.jpg",
       author: "Kwame Asante",
       date: "March 10, 2026",
-      category: "Revenue",
+      category: "Guest Experience",
       readTime: "6 min read"
     },
     {
@@ -45,10 +57,10 @@ export default function Magazine() {
       title: "Hiring & Keeping the Right Team",
       excerpt:
         "Practical advice for recruiting, onboarding and retaining staff who grow with you.",
-      image: "https://images.unsplash.com/photo-1688302583595-5482083f6843?q=80&w=1543&auto=format&fit=crop",
+      image: "/assets/8.jpg",
       author: "Dr. Naledi Mvubu",
       date: "March 8, 2026",
-      category: "Team",
+      category: "Staffing",
       readTime: "7 min read"
     },
     {
@@ -57,10 +69,10 @@ export default function Magazine() {
       title: "Building a Brand Clients Talk About",
       excerpt:
         "Turn your salon, spa or barbershop into a local love brand clients proudly recommend.",
-      image: "https://plus.unsplash.com/premium_photo-1729702169709-87c1e287a2a5?q=80&w=2070&auto=format&fit=crop",
+      image: "/assets/34.jpg",
       author: "Fatima Diallo",
       date: "March 5, 2026",
-      category: "Branding",
+      category: "Finance",
       readTime: "8 min read"
     },
     {
@@ -78,13 +90,13 @@ export default function Magazine() {
     {
       id: 6,
       slug: "expanding-one-location-many",
-      title: "Expanding from One Location to Many",
+      title: "Salon Stories: Growing from One to Many",
       excerpt:
-        "Lessons from African owners who successfully opened second and third branches.",
-      image: "https://images.unsplash.com/photo-1765607476252-19010772800e?q=80&w=1065&auto=format&fit=crop",
+        "Interviews with African salon, spa & barbershop owners who have expanded beyond one location.",
+      image: "/assets/32.jpg",
       author: "Kwame Asante",
       date: "February 28, 2026",
-      category: "Growth",
+      category: "Salon Stories",
       readTime: "6 min read"
     }
   ];
@@ -180,7 +192,7 @@ export default function Magazine() {
               </div>
               
               <Link
-                to="/magazine/article/from-chair-to-ceo"
+                to="/magazine/article/why-professional-products-essential-growth"
                 className={cn(
                   "inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold",
                   "bg-black text-white hover:bg-black/90",
@@ -285,31 +297,18 @@ export default function Magazine() {
           <p className={cn(
             "text-foreground/70 text-lg mb-8 font-light"
           )}>
-            Subscribe to receive the latest business tips, growth stories and
-            practical tools for beauty entrepreneurs.
+            Join our Business Club to get every issue plus exclusive owner resources.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className={cn(
-                "flex-1 px-4 py-3 rounded-sm",
-                "bg-background border border-border",
-                "text-foreground placeholder:text-foreground/50",
-                "focus:outline-none focus:ring-2 focus:ring-black"
-              )}
-            />
-            <button
-              type="submit"
-              className={cn(
-                "px-6 py-3 rounded-sm font-semibold",
-                "bg-black text-white hover:bg-black/90",
-                "transition-colors duration-200"
-              )}
-            >
-              Subscribe
-            </button>
-          </form>
+          <Link
+            to="/business-club"
+            className={cn(
+              "inline-flex items-center justify-center px-8 py-3 rounded-sm font-semibold",
+              "bg-black text-white hover:bg-black/90",
+              "transition-colors duration-200"
+            )}
+          >
+            Join the Business Club
+          </Link>
         </div>
       </section>
 

@@ -5,6 +5,39 @@ import { Calendar, User, ArrowLeft } from "lucide-react";
 
 // Shared article data - in a real app this would come from an API
 const ARTICLES: Record<string, { title: string; excerpt: string; image: string; author: string; date: string; category: string; content: string }> = {
+  "why-professional-products-essential-growth": {
+    title: "Why professional products are essential for business growth",
+    excerpt:
+      "How the right professional products protect your reputation, improve client results and unlock sustainable growth.",
+    image: "/assets/2.jpg",
+    author: "Spa & Salon Africa Editorial Team",
+    date: "March 15, 2026",
+    category: "Business Strategy & Management",
+    content: `
+      The products you choose to put on your shelves and use on your clients say a lot about your business. They communicate your standards, your expertise and how seriously you take results.
+
+      In many African markets, it can be tempting to mix professional products with cheaper alternatives to “save” on cost. But in reality, this often creates hidden losses in client trust, retention and referrals.
+
+      **1. Professional products protect your results**
+      When you invest in high‑performance, professionally tested products, you protect the outcomes your clients see and feel. Colours last longer, hair and skin recover better, and services feel more luxurious — all of which gives clients a reason to come back and pay your prices.
+
+      **2. Retail is a profit centre, not a favour**
+      Stocking professional retail is not about “pushing products”. It is about offering a complete solution so that clients can maintain their results between visits. Done well, retail should be a consistent, predictable revenue stream that supports your monthly targets.
+
+      **3. Partners, not just suppliers**
+      The right professional brands will support you with education, merchandising, marketing materials and sometimes even events. Treat these brands as partners and ask: What support do you offer salons like mine? How can we grow together in this market?
+
+      **4. Pricing with confidence**
+      Professional products make it easier to justify your pricing. When your team can explain why a specific treatment or home‑care system works and exactly what it does, clients understand the value behind the price on your menu.
+
+      **5. Protecting your reputation**
+      Every client who leaves your chair carries your name with them. Cheap or inconsistent products might save a little money upfront, but they also increase the risk of disappointment, damage or complaints — all of which costs far more in the long run.
+
+      The question is not whether professional products are “expensive”. The real question is whether your business can afford not to use and recommend them.
+
+      *Inside the Spa & Salon Africa Business Club we go deeper into choosing product partners, setting retail targets and training your team to recommend with confidence.*
+    `,
+  },
   "from-chair-to-ceo": {
     title: "From Chair to CEO: Systems that Free Up the Owner",
     excerpt: "Discover the key systems that allow African salon, spa & barbershop owners to work on the business, not in it.",
@@ -42,28 +75,28 @@ const ARTICLES: Record<string, { title: string; excerpt: string; image: string; 
   "pricing-with-confidence": {
     title: "Pricing with Confidence in Any City",
     excerpt: "How to charge what you're worth while staying competitive in your local market.",
-    image: "https://images.unsplash.com/photo-1761233585177-73b12a61ea4d?q=80&w=986&auto=format&fit=crop",
+    image: "/assets/14.jpg",
     author: "Kwame Asante",
     date: "March 10, 2026",
-    category: "Revenue",
+    category: "Guest Experience",
     content: "Pricing is one of the biggest challenges for salon and spa owners. This article explores how to set prices that reflect your value while remaining competitive. Full article coming soon.",
   },
   "hiring-keeping-team": {
     title: "Hiring & Keeping the Right Team",
     excerpt: "Practical advice for recruiting, onboarding and retaining staff who grow with you.",
-    image: "https://images.unsplash.com/photo-1688302583595-5482083f6843?q=80&w=1543&auto=format&fit=crop",
+    image: "/assets/8.jpg",
     author: "Dr. Naledi Mvubu",
     date: "March 8, 2026",
-    category: "Team",
+    category: "Staffing",
     content: "Building a great team starts with clarity on what you need and who fits your culture. Full article coming soon.",
   },
   "building-brand-clients-talk-about": {
     title: "Building a Brand Clients Talk About",
     excerpt: "Turn your salon, spa or barbershop into a local love brand clients proudly recommend.",
-    image: "https://plus.unsplash.com/premium_photo-1729702169709-87c1e287a2a5?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/34.jpg",
     author: "Fatima Diallo",
     date: "March 5, 2026",
-    category: "Branding",
+    category: "Finance",
     content: "Your brand is what people say about you when you're not in the room. Full article coming soon.",
   },
   "money-management-beauty-entrepreneurs": {
@@ -76,13 +109,13 @@ const ARTICLES: Record<string, { title: string; excerpt: string; image: string; 
     content: "Cash flow and profit are two different things. Learn the basics every beauty business owner needs. Full article coming soon.",
   },
   "expanding-one-location-many": {
-    title: "Expanding from One Location to Many",
-    excerpt: "Lessons from African owners who successfully opened second and third branches.",
-    image: "https://images.unsplash.com/photo-1765607476252-19010772800e?q=80&w=1065&auto=format&fit=crop",
+    title: "Salon Stories: Growing from One to Many",
+    excerpt: "Interviews with African owners who successfully opened second and third branches.",
+    image: "/assets/32.jpg",
     author: "Kwame Asante",
     date: "February 28, 2026",
-    category: "Growth",
-    content: "Scaling to multiple locations requires systems, delegation and the right timing. Full article coming soon.",
+    category: "Salon Stories",
+    content: "Scaling to multiple locations requires systems, delegation and the right timing. In this Salon Stories series, we sit down with owners like Juma and other industry players to unpack what really happens behind the scenes as they grow.",
   },
 };
 

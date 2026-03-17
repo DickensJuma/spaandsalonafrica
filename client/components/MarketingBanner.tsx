@@ -48,7 +48,7 @@ export default function MarketingBanner({
                 <img
                   src={imageUrl}
                   alt={businessName}
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>

@@ -9,13 +9,14 @@ export default function BusinessClub() {
 
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black/5">
-        <div className="max-w-4xl mx-auto">
-          <h1 className={cn(
-            "font-display text-5xl md:text-6xl font-bold mb-8",
-            "text-foreground"
-          )}>
-            The Spa &amp; Salon Africa Business Club
-          </h1>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className={cn(
+              "font-display text-5xl md:text-6xl font-bold mb-8",
+              "text-foreground"
+            )}>
+              The Spa &amp; Salon Africa Business Club
+            </h1>
           <p className={cn(
             "text-foreground/70 text-base md:text-lg mb-6",
             "font-light leading-relaxed"
@@ -40,6 +41,14 @@ export default function BusinessClub() {
             who are serious about building profitable, well-run businesses while
             still enjoying the journey.
           </p>
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-2xl">
+            <img
+              src="/assets/31.jpg"
+              alt="Spa & Salon Africa Business Club"
+              className="w-full h-[320px] md:h-[380px] object-cover"
+            />
+          </div>
         </div>
       </section>
 

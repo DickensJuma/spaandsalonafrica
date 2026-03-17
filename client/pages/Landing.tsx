@@ -154,12 +154,11 @@ export default function Landing() {
             <div className="md:col-span-5 order-2 md:order-1">
               <div className="relative h-[340px] sm:h-[420px] md:h-[480px] lg:h-[520px] rounded-lg overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1643543156023-de1549751414?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="African salon and barbershop owners collaborating"
+                  src="/assets/1.jpg"
+                  alt="Empowering spa, salon & barbershop business owners in Africa"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="eager"
                 />
-                
               </div>
             </div>
 
@@ -183,9 +182,9 @@ export default function Landing() {
                   "text-foreground tracking-tight max-w-lg md:max-w-none"
                 )}
               >
-                Empowering Beauty Business
+                Empowering spa, salon &amp; barbershop
                 <br />
-                <span className="text-black">Owners in Africa</span>
+                <span className="text-black">business owners in Africa</span>
               </h1>
 
               <p
@@ -226,75 +225,7 @@ export default function Landing() {
 
             {/* Column 3: Latest Event, Article, Webinar */}
             <div className="md:col-span-3 order-3 flex flex-col gap-3 md:pl-2">
-              {/* Latest Event */}
-              <Link
-                to="/events"
-                className={cn(
-                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
-                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
-                )}
-              >
-                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&auto=format&fit=crop"
-                    alt="The Business Breakfast event"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="w-4 h-4 text-black flex-shrink-0" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
-                      Latest Event
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
-                    The Business Breakfast
-                  </h3>
-                  <p className="text-xs text-foreground/60 font-light mb-2">
-                    March 15, 2026 • Online Event
-                  </p>
-                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
-                    View event <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Latest Article */}
-              <Link
-                to="/magazine"
-                className={cn(
-                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
-                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
-                )}
-              >
-                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1658092967527-4e140d9bdaea?q=80&w=600&auto=format&fit=crop"
-                    alt="Spa, salon or barbershop decor 2026"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Star className="w-4 h-4 text-black flex-shrink-0" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
-                      Latest Article
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
-                    What your spa, salon or barbershop decor should look like in 2026
-                  </h3>
-                  <p className="text-xs text-foreground/60 font-light mb-2">
-                    Business Tips • March 15, 2026
-                  </p>
-                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
-                    Read article <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Upcoming Webinar */}
+              {/* Upcoming Webinar (first) */}
               <button
                 type="button"
                 onClick={handleOpenWebinarModal}
@@ -305,8 +236,8 @@ export default function Landing() {
               >
                 <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop"
-                    alt="The Bottom Line: Spa, Salon & Barbershop Profitability webinar"
+                    src="/assets/30.jpg"
+                    alt="Upcoming Spa & Salon Africa webinar"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -318,16 +249,84 @@ export default function Landing() {
                     </span>
                   </div>
                   <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
-                    The Bottom Line: Spa, Salon & Barbershop Profitability
+                    The Bottom Line: Spa, Salon &amp; Barbershop Profitability
                   </h3>
                   <p className="text-xs text-foreground/60 font-light mb-2">
-                    3:00 PM EAT • KSh 2,500
+                    20th &amp; 21st April • 6:00 PM - 8:00 PM
                   </p>
                   <span className="text-xs font-medium text-black inline-flex items-center gap-1">
                     Buy ticket <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>
               </button>
+
+              {/* Business Breakfast (second) */}
+              <Link
+                to="/events"
+                className={cn(
+                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
+                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
+                )}
+              >
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
+                  <img
+                    src="/assets/31.jpg"
+                    alt="The Business Breakfast event"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Calendar className="w-4 h-4 text-black flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                      Business Breakfast
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
+                    The Business Breakfast
+                  </h3>
+                  <p className="text-xs text-foreground/60 font-light mb-2">
+                    20th &amp; 21st April • 6:00 PM - 8:00 PM
+                  </p>
+                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
+                    View event <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Latest Article (last) */}
+              <Link
+                to="/magazine/article/why-professional-products-essential-growth"
+                className={cn(
+                  "flex overflow-hidden rounded-lg border border-black/10 bg-white",
+                  "hover:border-black/20 hover:shadow-lg transition-all duration-300 group"
+                )}
+              >
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
+                  <img
+                    src="/assets/2.jpg"
+                    alt="Why professional products are essential for business growth"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4 flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Star className="w-4 h-4 text-black flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground/60">
+                      Latest Article
+                    </span>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-sm mb-0.5 group-hover:text-black transition-colors leading-tight">
+                    Why professional products are essential for business growth
+                  </h3>
+                  <p className="text-xs text-foreground/60 font-light mb-2">
+                    Business Strategy &amp; Management • March 15, 2026
+                  </p>
+                  <span className="text-xs font-medium text-black inline-flex items-center gap-1">
+                    Read article <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -342,8 +341,8 @@ export default function Landing() {
             <div className="order-2 md:order-1">
               <div className="rounded-lg overflow-hidden shadow-2xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1765607476260-db2f5e310ea6?q=80&w=1064&auto=format&fit=crop"
-                  alt="Salon interior"
+                  src="/assets/10.jpg"
+                  alt="Why Spa & Salon Africa"
                   className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -488,7 +487,7 @@ export default function Landing() {
         <MarketingBanner
         businessName="Spark — Salon Management System"
         description="Spark helps salons, barbershops, spas, and beauty businesses run smarter with bookings, POS, staff, inventory, and analytics in one platform."
-        imageUrl="/assets/spark_ad.webp"
+        imageUrl="/assets/spark_image.jpeg"
         ctaText="Visit Spark"
         ctaUrl="https://spark.co.ke/"
         backgroundColor="bg-white"
@@ -498,13 +497,13 @@ export default function Landing() {
         articles={[
           {
             id: 1,
-            title: "From Chair to CEO: Systems that Free Up the Owner",
+            title: "Why professional products are essential for business growth",
             excerpt:
-              "Discover the key systems that allow African salon, spa & barbershop owners to work on the business, not in it.",
-            image: "https://images.unsplash.com/photo-1658092967527-4e140d9bdaea?q=80&w=2070&auto=format&fit=crop",
-            author: "Amara Okafor",
+              "How the right professional products protect your reputation, improve client results and unlock sustainable growth.",
+            image: "/assets/2.jpg",
+            author: "Spa & Salon Africa Editorial Team",
             date: "March 15, 2026",
-            category: "Business Tips",
+            category: "Business Strategy & Management",
             readTime: "6 min read",
           },
           {
@@ -512,7 +511,7 @@ export default function Landing() {
             title: "Marketing Playbook for African Salons",
             excerpt:
               "A simple weekly content plan to stay visible online and attract ideal clients.",
-            image: "https://images.unsplash.com/photo-1652095319417-4bf8a0de1a3d?q=80&w=927&auto=format&fit=crop",
+            image: "/assets/28.jpg",
             author: "Zainab Hassan",
             date: "March 12, 2026",
             category: "Marketing",
@@ -523,10 +522,10 @@ export default function Landing() {
             title: "Pricing with Confidence in Any City",
             excerpt:
               "How to charge what you're worth while staying competitive in your local market.",
-            image: "https://images.unsplash.com/photo-1761233585177-73b12a61ea4d?q=80&w=986&auto=format&fit=crop",
+            image: "/assets/14.jpg",
             author: "Kwame Asante",
             date: "March 10, 2026",
-            category: "Revenue",
+            category: "Guest Experience",
             readTime: "6 min read",
           },
           {
@@ -534,10 +533,10 @@ export default function Landing() {
             title: "Hiring & Keeping the Right Team",
             excerpt:
               "Practical advice for recruiting, onboarding and retaining staff who grow with you.",
-            image: "https://images.unsplash.com/photo-1688302583595-5482083f6843?q=80&w=1543&auto=format&fit=crop",
+            image: "/assets/8.jpg",
             author: "Dr. Naledi Mvubu",
             date: "March 8, 2026",
-            category: "Team",
+            category: "Staffing",
             readTime: "7 min read",
           },
           {
@@ -545,10 +544,10 @@ export default function Landing() {
             title: "Building a Brand Clients Talk About",
             excerpt:
               "Turn your salon, spa or barbershop into a local love brand clients proudly recommend.",
-            image: "https://plus.unsplash.com/premium_photo-1729702169709-87c1e287a2a5?q=80&w=2070&auto=format&fit=crop",
+            image: "/assets/34.jpg",
             author: "Fatima Diallo",
             date: "March 5, 2026",
-            category: "Branding",
+            category: "Finance",
             readTime: "8 min read",
           },
         ]}
@@ -627,7 +626,7 @@ export default function Landing() {
                     Webinar Registration
                   </h3>
                   <p className="text-sm text-white/70 mt-1">
-                    March 15, 2026 • 3:00 PM - 5:30 PM EAT
+                    20th &amp; 21st April • 6:00 PM - 8:00 PM EAT
                   </p>
                 </div>
               </div>
@@ -645,7 +644,7 @@ export default function Landing() {
               {/* Event Info Banner */}
               <div className="bg-black/5 border-l-4 border-black p-4 rounded-sm">
                 <h4 className="font-bold text-foreground mb-2">
-                  Scaling Your Salon: From Survival to 7 Figures
+                  The Bottom Line: Spa, Salon &amp; Barbershop Profitability
                 </h4>
                 <p className="text-sm text-foreground/70 font-light">
                   Join leading salon owners & business experts for actionable growth strategies
@@ -653,11 +652,11 @@ export default function Landing() {
                 <div className="mt-3 flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-2 text-foreground/60">
                     <Calendar className="w-4 h-4" />
-                    <span>March 15, 2026</span>
+                    <span>20th &amp; 21st April</span>
                   </div>
                   <div className="flex items-center gap-2 text-foreground/60">
                     <Clock className="w-4 h-4" />
-                    <span>3:00 PM - 5:30 PM EAT</span>
+                    <span>6:00 PM - 8:00 PM EAT</span>
                   </div>
                 </div>
                 <div className="mt-3 text-2xl font-bold text-black">

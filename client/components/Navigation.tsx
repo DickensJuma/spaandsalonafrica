@@ -58,7 +58,7 @@ export default function Navigation(_props: NavigationProps = {}) {
           <div className="flex justify-center">
             <Link to="/" className="text-center">
               <img
-                src="/assets/logo.jpeg"
+                src="/assets/S&SLogoNoBackGround (1).png"
                 alt="SPA & SALON AFRICA"
                 className="h-24 md:h-32 object-contain"
               />
@@ -84,7 +84,7 @@ export default function Navigation(_props: NavigationProps = {}) {
           <div className="flex justify-center">
             <Link to="/" className="text-center">
               <img
-                src="/assets/logo.jpeg"
+                src="/assets/S&SLogoNoBackGround (1).png"
                 alt="SPA & SALON AFRICA"
                 className="h-18 md:h-24 object-contain"
               />

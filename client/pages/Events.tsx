@@ -29,6 +29,7 @@ interface Event {
   amount?: number;
   paymentUrl?: string;
   cta: string;
+  image?: string;
 }
 
 interface WebinarRegistrationData {
@@ -293,16 +294,17 @@ export default function Events() {
   const upcomingEvents: Event[] = [
     {
       id: 1,
-      title: "Scaling Your Salon: From Survival to 7 Figures",
-      date: "March 15, 2026",
-      time: "3:00 PM - 5:30 PM",
+      title: "The Bottom Line: Spa, Salon & Barbershop Profitability",
+      date: "20th & 21st April",
+      time: "6:00 PM - 8:00 PM",
       location: "Online Webinar",
       attendees: 100,
       amount: 2500,
       paymentUrl: "https://paystack.com/pay/scaling-your-salon",
       cta: "Buy Ticket",
       description:
-        "Join leading salon owners & business experts for actionable growth strategies.",
+        "Live webinar with Fiona and guest experts on pricing, profit and sustainable growth for spa, salon & barbershop owners.",
+      image: "/assets/30.jpg",
     },
     // {
     //   id: 2,
@@ -373,9 +375,20 @@ export default function Events() {
             {upcomingEvents.map((event) => (
               <div
                 key={event.id}
-                className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow bg-white"
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                <div className="flex flex-col md:flex-row md:items-stretch md:justify-between gap-6">
+                  {/* Event Image */}
+                  {event.image && (
+                    <div className="w-full md:w-48 flex-shrink-0 overflow-hidden rounded-md">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-40 md:h-full object-cover"
+                      />
+                    </div>
+                  )}
+
                   {/* Event Info */}
                   <div className="flex-1">
                     {event.amount && (

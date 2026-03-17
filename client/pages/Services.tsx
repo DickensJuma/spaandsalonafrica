@@ -146,6 +146,7 @@ export default function Services() {
     {
       category: "Business Coaching",
       icon: Scissors,
+      image: "/assets/29.jpg",
       description: "One-on-one and group coaching for salon, spa & barbershop owners",
       items: [
         { name: "Business Foundations Audit", price: "" },
@@ -157,6 +158,7 @@ export default function Services() {
     {
       category: "Marketing & Brand Growth",
       icon: Sparkles,
+      image: "/assets/4.jpg",
       description: "Marketing systems tailored for African beauty businesses",
       items: [
         { name: "Social Media Content Playbook", price: "" },
@@ -168,6 +170,7 @@ export default function Services() {
     {
       category: "Operations & Systems",
       icon: Droplet,
+      image: "/assets/3.jpg",
       description: "Back-end systems that keep your business running smoothly",
       items: [
         { name: "Booking & Scheduling Systems", price: "" },
@@ -177,14 +180,27 @@ export default function Services() {
       ]
     },
     {
+      category: "Guest Experience Strategy & Implementation",
+      icon: Wind,
+      image: "/assets/7.jpg",
+      description: "Design and implement memorable guest experiences that keep clients returning",
+      items: [
+        { name: "Guest Journey Mapping & Design", price: "" },
+        { name: "Front Desk & Client Experience Training", price: "" },
+        { name: "Service Standards & Scripts", price: "" },
+        { name: "Feedback & Recovery Systems", price: "" }
+      ]
+    },
+    {
       category: "Education & Training",
       icon: Wind,
+      image: "/assets/33.jpg",
       description: "Training for owners and teams to level up skills and service",
       items: [
         { name: "New Owner Bootcamp", price: "" },
-        { name: "Front Desk & Client Experience Training", price: "" },
         { name: "Retail Sales Training", price: "" },
-        { name: "Leadership for Salon Managers", price: "" }
+        { name: "Leadership for Salon Managers", price: "" },
+        { name: "Team Education & Workshops", price: "" }
       ]
     }
   ];
@@ -226,53 +242,73 @@ export default function Services() {
               return (
                 <div
                   key={service.category}
-                  className="rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow"
+                  className="rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow bg-white"
                 >
-                  {/* Header */}
-                  <div className="bg-black/5 p-6 flex items-center gap-4">
-                    <Icon className="w-10 h-10 text-black flex-shrink-0" />
-                    <div>
-                      <h3 className={cn(
-                        "font-display text-xl font-semibold",
-                        "text-foreground"
-                      )}>
-                        {service.category}
-                      </h3>
-                      <p className="text-foreground/60 text-sm font-light">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Service Items */}
-                  <div className="divide-y divide-border">
-                    {service.items.map((item) => (
-                      <div
-                        key={item.name}
-                        className="p-4 flex items-center justify-between hover:bg-secondary/20 transition-colors"
-                      >
-                        <h4 className="font-medium text-foreground">
-                          {item.name}
-                        </h4>
-                        <span className="text-black font-semibold text-sm">
-                          {item.price}
-                        </span>
+                  <div className="flex flex-col md:flex-row">
+                    {/* Image on the left */}
+                    {("image" in service && service.image) && (
+                      <div className="md:w-40 lg:w-48 flex-shrink-0">
+                        <img
+                          src={service.image}
+                          alt={service.category}
+                          className="w-full h-full object-cover object-center"
+                        />
                       </div>
-                    ))}
-                  </div>
+                    )}
 
-                  {/* CTA Button */}
-                  <div className="p-4 bg-secondary/20">
-                    <button
-                      onClick={() => handleOpenModal(service.category, service.category)}
-                      className={cn(
-                        "w-full px-4 py-2 rounded-sm font-semibold",
-                        "bg-black text-white hover:bg-black/90",
-                        "transition-colors duration-200 text-sm"
-                      )}
-                    >
-                      Talk to Our Team
-                    </button>
+                    {/* Content on the right */}
+                    <div className="flex-1 flex flex-col">
+                      {/* Header */}
+                      <div className="p-6 border-b border-border flex items-start gap-4">
+                        <Icon className="w-8 h-8 text-black flex-shrink-0" />
+                        <div>
+                          <h3
+                            className={cn(
+                              "font-display text-xl font-semibold",
+                              "text-foreground"
+                            )}
+                          >
+                            {service.category}
+                          </h3>
+                          <p className="text-foreground/60 text-sm font-light">
+                            {service.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Service Items */}
+                      <div className="divide-y divide-border">
+                        {service.items.map((item) => (
+                          <div
+                            key={item.name}
+                            className="p-4 flex items-center justify-between hover:bg-secondary/20 transition-colors"
+                          >
+                            <h4 className="font-medium text-foreground">
+                              {item.name}
+                            </h4>
+                            <span className="text-black font-semibold text-sm">
+                              {item.price}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA Button */}
+                      <div className="p-4 bg-secondary/20 mt-auto">
+                        <button
+                          onClick={() =>
+                            handleOpenModal(service.category, service.category)
+                          }
+                          className={cn(
+                            "w-full px-4 py-2 rounded-sm font-semibold",
+                            "bg-black text-white hover:bg-black/90",
+                            "transition-colors duration-200 text-sm"
+                          )}
+                        >
+                          Talk to Our Team
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );

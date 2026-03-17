@@ -8,43 +8,52 @@ export default function About() {
 
       {/* Hero / Welcome Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
-          <h1 className={cn(
-            "font-display text-5xl md:text-6xl font-bold mb-8",
-            "text-foreground"
-          )}>
-            Welcome to Spa &amp; Salon Africa
-          </h1>
-          <p
-            className={cn(
-              "text-foreground/70 text-base md:text-lg mb-6",
-              "font-light leading-relaxed"
-            )}
-          >
-            The spa, salon and barbershop industry is one of the most dynamic,
-            customer-focused and fast-growing sectors in Africa. It&apos;s
-            creative. It&apos;s powerful. It&apos;s deeply personal.
-          </p>
-          <p
-            className={cn(
-              "text-foreground/70 text-base md:text-lg mb-6",
-              "font-light leading-relaxed"
-            )}
-          >
-            But behind every flawless fade, glowing facial and perfect weave is
-            a business owner navigating staffing challenges, rising costs,
-            marketing demands, taxes, customer retention and cash flow
-            pressures.
-          </p>
-          <p
-            className={cn(
-              "text-foreground/70 text-base md:text-lg font-medium",
-              "leading-relaxed"
-            )}
-          >
-            Spa &amp; Salon Africa exists to support the business side of
-            things.
-          </p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className={cn(
+              "font-display text-5xl md:text-6xl font-bold mb-8",
+              "text-foreground"
+            )}>
+              Welcome to Spa &amp; Salon Africa
+            </h1>
+            <p
+              className={cn(
+                "text-foreground/70 text-base md:text-lg mb-6",
+                "font-light leading-relaxed"
+              )}
+            >
+              The spa, salon and barbershop industry is one of the most dynamic,
+              customer-focused and fast-growing sectors in Africa. It&apos;s
+              creative. It&apos;s powerful. It&apos;s deeply personal.
+            </p>
+            <p
+              className={cn(
+                "text-foreground/70 text-base md:text-lg mb-6",
+                "font-light leading-relaxed"
+              )}
+            >
+              But behind every flawless fade, glowing facial and perfect weave is
+              a business owner navigating staffing challenges, rising costs,
+              marketing demands, taxes, customer retention and cash flow
+              pressures.
+            </p>
+            <p
+              className={cn(
+                "text-foreground/70 text-base md:text-lg font-medium",
+                "leading-relaxed"
+              )}
+            >
+              Spa &amp; Salon Africa exists to support the business side of
+              things.
+            </p>
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-2xl">
+            <img
+              src="/assets/25.jpg"
+              alt="About Spa & Salon Africa"
+              className="w-full h-[320px] md:h-[380px] object-cover"
+            />
+          </div>
         </div>
       </section>
 
