@@ -217,7 +217,9 @@ export default function Magazine() {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article) => (
+            {articles
+              .filter((article) => article.slug !== "why-professional-products-essential-growth")
+              .map((article) => (
               <Link
                 key={article.id}
                 to={`/magazine/article/${article.slug}`}

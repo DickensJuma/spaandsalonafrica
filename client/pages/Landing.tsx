@@ -6,6 +6,7 @@ import FeaturedSection from "@/components/FeaturedSection";
 import {  ArrowRight, Star, Calendar, Clock, Video, X, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { CURRENT_WEBINAR } from "@/shared/events";
 
 interface WebinarRegistrationData {
   name: string;
@@ -252,7 +253,7 @@ export default function Landing() {
                     The Bottom Line: Spa, Salon &amp; Barbershop Profitability
                   </h3>
                   <p className="text-xs text-foreground/60 font-light mb-2">
-                    20th &amp; 21st April • 6:00 PM - 8:00 PM
+                    {CURRENT_WEBINAR.date} • {CURRENT_WEBINAR.time}
                   </p>
                   <span className="text-xs font-medium text-black inline-flex items-center gap-1">
                     Buy ticket <ArrowRight className="w-3 h-3" />
@@ -286,7 +287,7 @@ export default function Landing() {
                     The Business Breakfast
                   </h3>
                   <p className="text-xs text-foreground/60 font-light mb-2">
-                    20th &amp; 21st April • 6:00 PM - 8:00 PM
+                    {CURRENT_WEBINAR.date} • {CURRENT_WEBINAR.time}
                   </p>
                   <span className="text-xs font-medium text-black inline-flex items-center gap-1">
                     View event <ArrowRight className="w-3 h-3" />
@@ -626,7 +627,7 @@ export default function Landing() {
                     Webinar Registration
                   </h3>
                   <p className="text-sm text-white/70 mt-1">
-                    20th &amp; 21st April • 6:00 PM - 8:00 PM EAT
+                    {CURRENT_WEBINAR.date} • {CURRENT_WEBINAR.time} EAT
                   </p>
                 </div>
               </div>
@@ -652,15 +653,15 @@ export default function Landing() {
                 <div className="mt-3 flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-2 text-foreground/60">
                     <Calendar className="w-4 h-4" />
-                    <span>20th &amp; 21st April</span>
+                    <span>{CURRENT_WEBINAR.date}</span>
                   </div>
                   <div className="flex items-center gap-2 text-foreground/60">
                     <Clock className="w-4 h-4" />
-                    <span>6:00 PM - 8:00 PM EAT</span>
+                    <span>{CURRENT_WEBINAR.time} EAT</span>
                   </div>
                 </div>
                 <div className="mt-3 text-2xl font-bold text-black">
-                  KSh 2,500
+                  KSh {CURRENT_WEBINAR.amount.toLocaleString()}
                 </div>
               </div>
 
