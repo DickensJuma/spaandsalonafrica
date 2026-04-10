@@ -9,12 +9,20 @@ class EmailService {
     name: string;
     email: string;
   };
+  private webinarPublicUrl: string;
+  private webinarImageUrl: string;
 
   constructor() {
     this.sender = {
       name: "Spark",
       email: process.env.SENDER_EMAIL || "noreply@spaandsalonafrica.com",
     };
+    this.webinarPublicUrl =
+      process.env.WEBINAR_PUBLIC_URL ||
+      `${process.env.FRONTEND_URL || "http://localhost:8080"}/events/the-bottom-line-webinar`;
+    this.webinarImageUrl =
+      process.env.WEBINAR_IMAGE_URL ||
+      `${process.env.FRONTEND_URL || "http://localhost:8080"}/assets/thebottomline.jpeg`;
 
     // Initialize SMTP transporter
     const smtpConfig = {
@@ -356,18 +364,20 @@ class EmailService {
       await this.transporter.sendMail({
         from: `"${this.sender.name}" <${this.sender.email}>`,
         to: `${data.name} <${data.email}>`,
-        subject: "Webinar Registration Confirmed - Scaling Your Salon",
+        subject: "Webinar Registration Confirmed - The Bottom Line",
         html: `
         <h2>You're Registered! 🎉</h2>
+        <img src="${this.webinarImageUrl}" alt="The Bottom Line webinar" style="width:100%; max-width:600px; border-radius: 8px; margin: 12px 0 20px 0; display:block;" />
         <p>Hi ${data.name},</p>
-        <p>Thank you for registering for our webinar <strong>"Scaling Your Salon: From Survival to 7 Figures"</strong>!</p>
+        <p>Thank you for registering for our webinar <strong>"The Bottom Line: Spa, Salon & Barbershop Profitability"</strong>!</p>
         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Webinar Details:</h3>
-          <p><strong>Date:</strong> March 15, 2026</p>
-          <p><strong>Time:</strong> 3:00 PM - 5:30 PM EAT</p>
+          <p><strong>Date:</strong> 20th & 21st April</p>
+          <p><strong>Time:</strong> 6:00 PM - 8:00 PM EAT</p>
           <p><strong>Format:</strong> Online Webinar</p>
           <p><strong>Registration ID:</strong> ${data.registrationId}</p>
         </div>
+        <p><strong>Share this webinar:</strong> <a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer">${this.webinarPublicUrl}</a></p>
         <p>You'll receive webinar link and access instructions 24 hours before event.</p>
         <p>Get ready to transform your salon business!</p>
         <p>Best regards,<br>The Spa & Salon Africa Team</p>
@@ -377,13 +387,14 @@ class EmailService {
         
         Hi ${data.name},
         
-        Thank you for registering for our webinar "Scaling Your Salon: From Survival to 7 Figures"!
+        Thank you for registering for our webinar "The Bottom Line: Spa, Salon & Barbershop Profitability"!
         
         Webinar Details:
-        Date: March 15, 2026
-        Time: 3:00 PM - 5:30 PM EAT
+        Date: 20th & 21st April
+        Time: 6:00 PM - 8:00 PM EAT
         Format: Online Webinar
         Registration ID: ${data.registrationId}
+        Share this webinar: ${this.webinarPublicUrl}
         
         You'll receive webinar link and access instructions 24 hours before event.
         
@@ -425,7 +436,8 @@ class EmailService {
         subject: `New Webinar Registration: ${data.name}`,
         html: `
         <h2>New Webinar Registration! 🎯</h2>
-        <p>A new participant has registered for the "Scaling Your Salon" webinar:</p>
+        <img src="${this.webinarImageUrl}" alt="The Bottom Line webinar" style="width:100%; max-width:600px; border-radius: 8px; margin: 12px 0 20px 0; display:block;" />
+        <p>A new participant has registered for the "The Bottom Line: Spa, Salon & Barbershop Profitability" webinar:</p>
         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Participant Details:</h3>
           <p><strong>Name:</strong> ${data.name}</p>
@@ -435,12 +447,13 @@ class EmailService {
           <p><strong>Registration ID:</strong> ${data.registrationId}</p>
           ${data.questions ? `<p><strong>Questions/Topics of Interest:</strong><br>${data.questions.replace(/\n/g, '<br>')}</p>` : ''}
         </div>
-        <p>This registration is for March 15, 2026 webinar.</p>
+        <p>This registration is for the 20th & 21st April webinar.</p>
+        <p><strong>Public share link:</strong> <a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer">${this.webinarPublicUrl}</a></p>
       `,
         text: `
         New Webinar Registration! 🎯
         
-        A new participant has registered for the "Scaling Your Salon" webinar:
+        A new participant has registered for the "The Bottom Line: Spa, Salon & Barbershop Profitability" webinar:
         
         Participant Details:
         Name: ${data.name}
@@ -450,7 +463,8 @@ class EmailService {
         Registration ID: ${data.registrationId}
         ${data.questions ? `Questions/Topics of Interest:\n${data.questions}` : ''}
         
-        This registration is for March 15, 2026 webinar.
+        This registration is for the 20th & 21st April webinar.
+        Public share link: ${this.webinarPublicUrl}
       `,
       });
       console.log("✅ Webinar registration notification email sent to admin");
@@ -482,17 +496,19 @@ class EmailService {
         subject: "Payment Confirmed - Your Webinar Spot is Secured! 🎉",
         html: `
         <h2>Payment Confirmed! 🎉</h2>
+        <img src="${this.webinarImageUrl}" alt="The Bottom Line webinar" style="width:100%; max-width:600px; border-radius: 8px; margin: 12px 0 20px 0; display:block;" />
         <p>Hi ${data.name},</p>
         <p>Thank you! Your payment of <strong>KSh ${data.amount.toLocaleString()}</strong> has been successfully processed.</p>
-        <p>Your spot for webinar <strong>"Scaling Your Salon: From Survival to 7 Figures"</strong> is now confirmed!</p>
+        <p>Your spot for webinar <strong>"The Bottom Line: Spa, Salon & Barbershop Profitability"</strong> is now confirmed!</p>
         <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Webinar Details:</h3>
-          <p><strong>Date:</strong> March 15, 2026</p>
-          <p><strong>Time:</strong> 3:00 PM - 5:30 PM EAT</p>
+          <p><strong>Date:</strong> 20th & 21st April</p>
+          <p><strong>Time:</strong> 6:00 PM - 8:00 PM EAT</p>
           <p><strong>Format:</strong> Online Webinar</p>
           <p><strong>Registration ID:</strong> ${data.registrationId}</p>
           <p><strong>Amount Paid:</strong> KSh ${data.amount.toLocaleString()}</p>
         </div>
+        <p><strong>Share this webinar:</strong> <a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer">${this.webinarPublicUrl}</a></p>
         <p>You'll receive webinar link and access instructions 24 hours before event.</p>
         <p>Get ready to transform your salon business!</p>
         <p>Best regards,<br>The Spa & Salon Africa Team</p>
@@ -504,14 +520,15 @@ class EmailService {
         
         Thank you! Your payment of KSh ${data.amount.toLocaleString()} has been successfully processed.
         
-        Your spot for webinar "Scaling Your Salon: From Survival to 7 Figures" is now confirmed!
+        Your spot for webinar "The Bottom Line: Spa, Salon & Barbershop Profitability" is now confirmed!
         
         Webinar Details:
-        Date: March 15, 2026
-        Time: 3:00 PM - 5:30 PM EAT
+        Date: 20th & 21st April
+        Time: 6:00 PM - 8:00 PM EAT
         Format: Online Webinar
         Registration ID: ${data.registrationId}
         Amount Paid: KSh ${data.amount.toLocaleString()}
+        Share this webinar: ${this.webinarPublicUrl}
         
         You'll receive webinar link and access instructions 24 hours before event.
         

@@ -10,6 +10,7 @@ export interface WebinarEvent {
   cta: string;
   description: string;
   image: string;
+  ticketImage?: string;
 }
 
 export const CURRENT_WEBINAR: WebinarEvent = {
@@ -24,6 +25,7 @@ export const CURRENT_WEBINAR: WebinarEvent = {
   cta: "Buy Ticket",
   description:
     "Live webinar with Fiona and guest experts on pricing, profit and sustainable growth for spa, salon & barbershop owners.",
-  image: "/assets/30.jpg",
+  image: "/assets/thebottomline.jpeg",
+  ticketImage: "/assets/thebottomline2.jpeg",
 };
 

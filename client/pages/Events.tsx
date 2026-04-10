@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { cn } from "@/lib/utils";
 import {
@@ -11,6 +11,7 @@ import {
   Loader2,
   ArrowRight,
   Video,
+  ChevronDown,
 } from "lucide-react";
 import {
   EventRegistrationRequest,
@@ -31,6 +32,7 @@ interface Event {
   paymentUrl?: string;
   cta: string;
   image?: string;
+  ticketImage?: string;
 }
 
 interface WebinarRegistrationData {
@@ -50,6 +52,8 @@ interface EventRegistrationData {
 }
 
 export default function Events() {
+  const navigate = useNavigate();
+  const webinarFormRef = useRef<HTMLDivElement | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -165,6 +169,12 @@ export default function Events() {
     }
 
     setSubmitStatus({ type: null, message: "" });
+  };
+
+  const handleEventCardClick = (event: Event) => {
+    if (event.id === CURRENT_WEBINAR.id) {
+      navigate("/events/the-bottom-line-webinar");
+    }
   };
 
   const handleCloseModal = () => {
@@ -305,6 +315,7 @@ export default function Events() {
       cta: CURRENT_WEBINAR.cta,
       description: CURRENT_WEBINAR.description,
       image: CURRENT_WEBINAR.image,
+      ticketImage: CURRENT_WEBINAR.ticketImage,
     },
     // {
     //   id: 2,
@@ -375,7 +386,11 @@ export default function Events() {
             {upcomingEvents.map((event) => (
               <div
                 key={event.id}
-                className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow bg-white"
+                onClick={() => handleEventCardClick(event)}
+                className={cn(
+                  "border border-border rounded-lg p-6 hover:shadow-md transition-shadow bg-white",
+                  event.id === CURRENT_WEBINAR.id && "cursor-pointer",
+                )}
               >
                 <div className="flex flex-col md:flex-row md:items-stretch md:justify-between gap-6">
                   {/* Event Image */}
@@ -445,7 +460,10 @@ export default function Events() {
                   {/* Action Button */}
                   <div className="flex-shrink-0">
                     <button
-                      onClick={() => handleRegisterClick(event)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRegisterClick(event);
+                      }}
                       className={cn(
                         "px-6 py-3 rounded-sm font-semibold whitespace-nowrap",
                         "bg-black text-white hover:bg-black/90",
@@ -513,7 +531,7 @@ export default function Events() {
         >
           <div
             className={cn(
-              "bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto",
+              "bg-white rounded-lg shadow-2xl max-w-3xl lg:max-w-4xl w-full max-h-[90vh] overflow-y-auto",
               "border-2 border-black/10",
             )}
             onClick={(e) => e.stopPropagation()}
@@ -738,48 +756,69 @@ export default function Events() {
             </div>
 
             {/* Modal Content */}
-            <form onSubmit={handleWebinarSubmit} className="p-6 space-y-6">
-              {/* Event Info Banner */}
-              <div className="bg-black/5 border-l-4 border-black p-4 rounded-sm">
-                <h4 className="font-bold text-foreground mb-2">
-                  {selectedEvent.title}
-                </h4>
-                <p className="text-sm text-foreground/70 font-light">
-                  {selectedEvent.description}
-                </p>
-                <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
-                  <div className="flex items-center gap-2 text-foreground/60">
-                    <Calendar className="w-4 h-4" />
-                    <span>{selectedEvent.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-foreground/60">
-                    <Clock className="w-4 h-4" />
-                    <span>{selectedEvent.time}</span>
-                  </div>
-                </div>
-                {selectedEvent.amount && (
-                  <div className="mt-3 text-2xl font-bold text-black">
-                    KSh {selectedEvent.amount.toLocaleString()}
-                  </div>
-                )}
-              </div>
-
-              {/* Status Message */}
-              {submitStatus.type && (
-                <div
-                  className={cn(
-                    "p-4 rounded-sm text-sm",
-                    submitStatus.type === "success"
-                      ? "bg-black/10 text-black border border-black/20"
-                      : "bg-red-50 text-red-700 border border-red-200",
+            <form onSubmit={handleWebinarSubmit} className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                <div className="bg-black/5 border-l-4 border-black p-4 rounded-sm md:sticky md:top-4">
+                  {selectedEvent.ticketImage && (
+                    <img
+                      src={selectedEvent.ticketImage}
+                      alt={selectedEvent.title}
+                      className="w-full h-auto object-contain rounded-sm mb-4 bg-black/5"
+                    />
                   )}
-                >
-                  {submitStatus.message}
+                  <h4 className="font-bold text-foreground mb-2">
+                    {selectedEvent.title}
+                  </h4>
+                  <p className="text-sm text-foreground/70 font-light">
+                    {selectedEvent.description}
+                  </p>
+                  <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
+                    <div className="flex items-center gap-2 text-foreground/60">
+                      <Calendar className="w-4 h-4" />
+                      <span>{selectedEvent.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-foreground/60">
+                      <Clock className="w-4 h-4" />
+                      <span>{selectedEvent.time}</span>
+                    </div>
+                  </div>
+                  {selectedEvent.amount && (
+                    <div className="mt-3 text-2xl font-bold text-black">
+                      KSh {selectedEvent.amount.toLocaleString()}
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      webinarFormRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      })
+                    }
+                    className="md:hidden mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-sm border border-black/20 text-sm font-medium text-foreground hover:bg-black/5 transition-colors"
+                  >
+                    Continue to Form
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
                 </div>
-              )}
 
-              {/* Name */}
-              <div>
+                <div ref={webinarFormRef} className="space-y-6">
+                  {/* Status Message */}
+                  {submitStatus.type && (
+                    <div
+                      className={cn(
+                        "p-4 rounded-sm text-sm",
+                        submitStatus.type === "success"
+                          ? "bg-black/10 text-black border border-black/20"
+                          : "bg-red-50 text-red-700 border border-red-200",
+                      )}
+                    >
+                      {submitStatus.message}
+                    </div>
+                  )}
+
+                  {/* Name */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Full Name <span className="text-red-500">*</span>
                 </label>
@@ -797,10 +836,10 @@ export default function Events() {
                   )}
                   placeholder="Your full name"
                 />
-              </div>
+                  </div>
 
-              {/* Business Name */}
-              <div>
+                  {/* Business Name */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Name of Business <span className="text-red-500">*</span>
                 </label>
@@ -818,10 +857,10 @@ export default function Events() {
                   )}
                   placeholder="Your salon, spa or barbershop name"
                 />
-              </div>
+                  </div>
 
-              {/* Phone */}
-              <div>
+                  {/* Phone */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
@@ -839,10 +878,10 @@ export default function Events() {
                   )}
                   placeholder="+254 712 345 678"
                 />
-              </div>
+                  </div>
 
-              {/* Email */}
-              <div>
+                  {/* Email */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Email Address <span className="text-red-500">*</span>
                 </label>
@@ -860,10 +899,10 @@ export default function Events() {
                   )}
                   placeholder="you@example.com"
                 />
-              </div>
+                  </div>
 
-              {/* Questions for Speakers */}
-              <div>
+                  {/* Questions for Speakers */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Any questions for the keynote speakers?
                 </label>
@@ -880,10 +919,10 @@ export default function Events() {
                   )}
                   placeholder="What would you like to see addressed during the webinar?"
                 />
-              </div>
+                  </div>
 
-              {/* Submit Button */}
-              <div className="flex gap-4 pt-4">
+                  {/* Submit Button */}
+                  <div className="flex gap-4 pt-4">
                 <button
                   type="button"
                   onClick={handleCloseWebinarModal}
@@ -918,12 +957,14 @@ export default function Events() {
                     </>
                   )}
                 </button>
-              </div>
+                  </div>
 
-              {/* Payment Info */}
-              <div className="text-xs text-foreground/60 text-center pt-2 border-t border-border">
-                You will be redirected to Paystack to complete your payment
-                securely
+                  {/* Payment Info */}
+                  <div className="text-xs text-foreground/60 text-center pt-2 border-t border-border">
+                    You will be redirected to Paystack to complete your payment
+                    securely
+                  </div>
+                </div>
               </div>
             </form>
           </div>

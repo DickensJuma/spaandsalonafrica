@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import { ContactSection } from "@/components/ContactSection";
 import MarketingBanner from "@/components/MarketingBanner";
 import FeaturedSection from "@/components/FeaturedSection";
-import {  ArrowRight, Star, Calendar, Clock, Video, X, Loader2 } from "lucide-react";
+import {  ArrowRight, Star, Calendar, Clock, Video, X, Loader2, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CURRENT_WEBINAR } from "@/shared/events";
 
 interface WebinarRegistrationData {
@@ -17,6 +17,7 @@ interface WebinarRegistrationData {
 }
 
 export default function Landing() {
+  const webinarFormRef = useRef<HTMLDivElement | null>(null);
   const [isWebinarModalOpen, setIsWebinarModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -237,7 +238,7 @@ export default function Landing() {
               >
                 <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden rounded-l-lg">
                   <img
-                    src="/assets/30.jpg"
+                    src={CURRENT_WEBINAR.image}
                     alt="Upcoming Spa & Salon Africa webinar"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -613,7 +614,7 @@ export default function Landing() {
         >
           <div
             className={cn(
-              "bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto",
+              "bg-white rounded-lg shadow-2xl max-w-3xl lg:max-w-4xl w-full max-h-[90vh] overflow-y-auto",
               "border-2 border-black/10"
             )}
             onClick={(e) => e.stopPropagation()}
@@ -641,46 +642,67 @@ export default function Landing() {
             </div>
 
             {/* Modal Content */}
-            <form onSubmit={handleWebinarSubmit} className="p-6 space-y-6">
-              {/* Event Info Banner */}
-              <div className="bg-black/5 border-l-4 border-black p-4 rounded-sm">
-                <h4 className="font-bold text-foreground mb-2">
-                  The Bottom Line: Spa, Salon &amp; Barbershop Profitability
-                </h4>
-                <p className="text-sm text-foreground/70 font-light">
-                  Join leading salon owners & business experts for actionable growth strategies
-                </p>
-                <div className="mt-3 flex items-center gap-4 text-sm">
-                  <div className="flex items-center gap-2 text-foreground/60">
-                    <Calendar className="w-4 h-4" />
-                    <span>{CURRENT_WEBINAR.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-foreground/60">
-                    <Clock className="w-4 h-4" />
-                    <span>{CURRENT_WEBINAR.time} EAT</span>
-                  </div>
-                </div>
-                <div className="mt-3 text-2xl font-bold text-black">
-                  KSh {CURRENT_WEBINAR.amount.toLocaleString()}
-                </div>
-              </div>
-
-              {/* Status Message */}
-              {submitStatus.type && (
-                <div
-                  className={cn(
-                    "p-4 rounded-sm text-sm",
-                    submitStatus.type === "success"
-                      ? "bg-black/10 text-black border border-black/20"
-                      : "bg-red-50 text-red-700 border border-red-200"
+            <form onSubmit={handleWebinarSubmit} className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                <div className="bg-black/5 border-l-4 border-black p-4 rounded-sm md:sticky md:top-4">
+                  {CURRENT_WEBINAR.ticketImage && (
+                    <img
+                      src={CURRENT_WEBINAR.ticketImage}
+                      alt={CURRENT_WEBINAR.title}
+                      className="w-full h-auto object-contain rounded-sm mb-4 bg-black/5"
+                    />
                   )}
-                >
-                  {submitStatus.message}
+                  <h4 className="font-bold text-foreground mb-2">
+                    The Bottom Line: Spa, Salon &amp; Barbershop Profitability
+                  </h4>
+                  <p className="text-sm text-foreground/70 font-light">
+                    Join leading salon owners & business experts for actionable growth strategies
+                  </p>
+                  <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
+                    <div className="flex items-center gap-2 text-foreground/60">
+                      <Calendar className="w-4 h-4" />
+                      <span>{CURRENT_WEBINAR.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-foreground/60">
+                      <Clock className="w-4 h-4" />
+                      <span>{CURRENT_WEBINAR.time} EAT</span>
+                    </div>
+                  </div>
+                  <div className="mt-3 text-2xl font-bold text-black">
+                    KSh {CURRENT_WEBINAR.amount.toLocaleString()}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      webinarFormRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      })
+                    }
+                    className="md:hidden mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-sm border border-black/20 text-sm font-medium text-foreground hover:bg-black/5 transition-colors"
+                  >
+                    Continue to Form
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
                 </div>
-              )}
 
-              {/* Name */}
-              <div>
+                <div ref={webinarFormRef} className="space-y-6">
+                  {/* Status Message */}
+                  {submitStatus.type && (
+                    <div
+                      className={cn(
+                        "p-4 rounded-sm text-sm",
+                        submitStatus.type === "success"
+                          ? "bg-black/10 text-black border border-black/20"
+                          : "bg-red-50 text-red-700 border border-red-200"
+                      )}
+                    >
+                      {submitStatus.message}
+                    </div>
+                  )}
+
+                  {/* Name */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Full Name <span className="text-red-500">*</span>
                 </label>
@@ -698,10 +720,10 @@ export default function Landing() {
                   )}
                   placeholder="Your full name"
                 />
-              </div>
+                  </div>
 
-              {/* Business Name */}
-              <div>
+                  {/* Business Name */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Name of Business <span className="text-red-500">*</span>
                 </label>
@@ -719,10 +741,10 @@ export default function Landing() {
                   )}
                   placeholder="Your salon, spa or barbershop name"
                 />
-              </div>
+                  </div>
 
-              {/* Phone */}
-              <div>
+                  {/* Phone */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
@@ -740,10 +762,10 @@ export default function Landing() {
                   )}
                   placeholder="+254 712 345 678"
                 />
-              </div>
+                  </div>
 
-              {/* Email */}
-              <div>
+                  {/* Email */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Email Address <span className="text-red-500">*</span>
                 </label>
@@ -761,10 +783,10 @@ export default function Landing() {
                   )}
                   placeholder="you@example.com"
                 />
-              </div>
+                  </div>
 
-              {/* Questions for Speakers */}
-              <div>
+                  {/* Questions for Speakers */}
+                  <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Any questions for the keynote speakers?
                 </label>
@@ -781,10 +803,10 @@ export default function Landing() {
                   )}
                   placeholder="What would you like to see addressed during the webinar?"
                 />
-              </div>
+                  </div>
 
-              {/* Submit Button */}
-              <div className="flex gap-4 pt-4">
+                  {/* Submit Button */}
+                  <div className="flex gap-4 pt-4">
                 <button
                   type="button"
                   onClick={handleCloseWebinarModal}
@@ -819,11 +841,13 @@ export default function Landing() {
                     </>
                   )}
                 </button>
-              </div>
+                  </div>
 
-              {/* Payment Info */}
-              <div className="text-xs text-foreground/60 text-center pt-2 border-t border-border">
-                You will be redirected to Paystack to complete your payment securely
+                  {/* Payment Info */}
+                  <div className="text-xs text-foreground/60 text-center pt-2 border-t border-border">
+                    You will be redirected to Paystack to complete your payment securely
+                  </div>
+                </div>
               </div>
             </form>
           </div>
