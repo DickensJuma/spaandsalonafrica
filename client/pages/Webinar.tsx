@@ -116,7 +116,7 @@ export default function Webinar() {
 
             <div className="space-y-4 max-w-sm">
               <Link
-                to="/events"
+                to="/events?register=webinar"
                 className={cn(
                   "w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-sm font-semibold",
                   "bg-black text-white hover:bg-black/90 transition-colors",

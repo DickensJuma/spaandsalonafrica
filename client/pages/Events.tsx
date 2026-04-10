@@ -302,6 +302,31 @@ export default function Events() {
     }
   };
 
+  useEffect(() => {
+    const registerTarget = searchParams.get("register");
+
+    if (registerTarget === "webinar") {
+      handleRegisterClick({
+        id: CURRENT_WEBINAR.id,
+        title: CURRENT_WEBINAR.title,
+        date: CURRENT_WEBINAR.date,
+        time: CURRENT_WEBINAR.time,
+        location: CURRENT_WEBINAR.location,
+        attendees: CURRENT_WEBINAR.attendees,
+        amount: CURRENT_WEBINAR.amount,
+        paymentUrl: CURRENT_WEBINAR.paymentUrl,
+        cta: CURRENT_WEBINAR.cta,
+        description: CURRENT_WEBINAR.description,
+        image: CURRENT_WEBINAR.image,
+        ticketImage: CURRENT_WEBINAR.ticketImage,
+      });
+
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete("register");
+      setSearchParams(nextParams);
+    }
+  }, [searchParams, setSearchParams]);
+
   const upcomingEvents: Event[] = [
     {
       id: CURRENT_WEBINAR.id,
@@ -728,7 +753,7 @@ export default function Events() {
         >
           <div
             className={cn(
-              "bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto",
+              "bg-white rounded-lg shadow-2xl max-w-3xl lg:max-w-4xl w-full max-h-[90vh] overflow-y-auto",
               "border-2 border-black/10",
             )}
             onClick={(e) => e.stopPropagation()}
