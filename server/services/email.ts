@@ -11,10 +11,13 @@ class EmailService {
   };
   private webinarPublicUrl: string;
   private webinarImageUrl: string;
+  private webinarPaybill: string;
+  private webinarPaybillAccount: string;
+  private webinarAmountKes: number;
 
   constructor() {
     this.sender = {
-      name: "Spark",
+      name: "Spa & Salon Africa",
       email: process.env.SENDER_EMAIL || "noreply@spaandsalonafrica.com",
     };
     this.webinarPublicUrl =
@@ -23,6 +26,9 @@ class EmailService {
     this.webinarImageUrl =
       process.env.WEBINAR_IMAGE_URL ||
       `${process.env.FRONTEND_URL || "http://localhost:8080"}/assets/thebottomline.jpeg`;
+    this.webinarPaybill = process.env.WEBINAR_PAYBILL || "247247";
+    this.webinarPaybillAccount = process.env.WEBINAR_PAYBILL_ACCOUNT || "769860";
+    this.webinarAmountKes = parseInt(process.env.WEBINAR_AMOUNT_KES || "2500", 10);
 
     // Initialize SMTP transporter
     const smtpConfig = {
@@ -364,44 +370,73 @@ class EmailService {
       await this.transporter.sendMail({
         from: `"${this.sender.name}" <${this.sender.email}>`,
         to: `${data.name} <${data.email}>`,
-        subject: "Webinar Registration Confirmed - The Bottom Line",
+        subject: "You're Almost There! – The Bottom Line webinar",
         html: `
-        <h2>You're Registered! 🎉</h2>
-        <img src="${this.webinarImageUrl}" alt="The Bottom Line webinar" style="width:100%; max-width:600px; border-radius: 8px; margin: 12px 0 20px 0; display:block;" />
-        <p>Hi ${data.name},</p>
-        <p>Thank you for registering for our webinar <strong>"The Bottom Line: Spa, Salon & Barbershop Profitability"</strong>!</p>
-        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h3>Webinar Details:</h3>
-          <p><strong>Date:</strong> 20th & 21st April</p>
-          <p><strong>Time:</strong> 6:00 PM - 8:00 PM EAT</p>
-          <p><strong>Format:</strong> Online Webinar</p>
-          <p><strong>Registration ID:</strong> ${data.registrationId}</p>
+        <div style="max-width:600px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;color:#111111;background-color:#ffffff;">
+          <div style="border-bottom:3px solid #000000;padding-bottom:18px;margin-bottom:26px;">
+            <h2 style="margin:0;font-size:24px;font-weight:700;color:#000000;letter-spacing:-0.02em;">You're Almost There!</h2>
+            <p style="margin:10px 0 0;font-size:12px;font-weight:600;color:#000000;text-transform:uppercase;letter-spacing:0.12em;">The Bottom Line webinar</p>
+          </div>
+          <p style="margin:0 0 14px;">Hi ${data.name},</p>
+          <p style="margin:0 0 14px;color:#333333;">We appreciate your interest in <strong style="color:#000000;">"The Bottom Line: Profitability webinar for spa, salon and barbershop owners"</strong>.</p>
+          <p style="margin:0 0 18px;color:#333333;">To complete your registration, use <strong style="color:#000000;">Buy Ticket</strong> on our site:</p>
+          <div style="margin:0 0 22px;">
+            <a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 22px;background-color:#000000;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;border-radius:2px;">Buy Ticket — complete registration</a>
+          </div>
+          <p style="margin:0 0 6px;font-size:12px;color:#666666;word-break:break-all;">${this.webinarPublicUrl}</p>
+          <p style="margin:28px 0 12px;font-weight:600;color:#000000;">Alternatively, pay via Paybill:</p>
+          <div style="background-color:#fafafa;border:1px solid #e5e5e5;padding:18px 20px;margin:0 0 22px;border-radius:2px;">
+            <p style="margin:6px 0;color:#111111;"><strong style="color:#000000;">Paybill:</strong> ${this.webinarPaybill}</p>
+            <p style="margin:6px 0;color:#111111;"><strong style="color:#000000;">Account Number:</strong> ${this.webinarPaybillAccount}</p>
+            <p style="margin:6px 0;color:#111111;"><strong style="color:#000000;">Amount:</strong> KSh ${this.webinarAmountKes.toLocaleString()}</p>
+          </div>
+          <div style="background-color:#ffffff;border:1px solid #000000;padding:20px 22px;margin:0 0 22px;border-radius:2px;">
+            <h3 style="margin:0 0 14px;font-size:14px;font-weight:700;color:#000000;text-transform:uppercase;letter-spacing:0.08em;">Webinar details</h3>
+            <p style="margin:8px 0;color:#333333;"><strong style="color:#000000;">Date:</strong> 20th & 21st April</p>
+            <p style="margin:8px 0;color:#333333;"><strong style="color:#000000;">Time:</strong> 6:00 PM - 8:00 PM EAT</p>
+            <p style="margin:8px 0;color:#333333;"><strong style="color:#000000;">Format:</strong> Online Webinar</p>
+            <p style="margin:8px 0;color:#333333;"><strong style="color:#000000;">Registration ID:</strong> ${data.registrationId}</p>
+          </div>
+          <p style="margin:0 0 8px;font-weight:600;color:#000000;">Share this webinar</p>
+          <p style="margin:0 0 22px;"><a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer" style="color:#000000;text-decoration:underline;">${this.webinarPublicUrl}</a></p>
+          <p style="margin:0 0 12px;color:#333333;">You'll receive the webinar link and access instructions 24 hours before the event.</p>
+          <p style="margin:0 0 28px;color:#333333;">Get ready to transform your salon business!</p>
+          <p style="margin:0;padding-top:22px;border-top:1px solid #e5e5e5;color:#000000;">Best regards,<br><span style="color:#333333;">The Spa & Salon Africa Team</span></p>
         </div>
-        <p><strong>Share this webinar:</strong> <a href="${this.webinarPublicUrl}" target="_blank" rel="noopener noreferrer">${this.webinarPublicUrl}</a></p>
-        <p>You'll receive webinar link and access instructions 24 hours before event.</p>
-        <p>Get ready to transform your salon business!</p>
-        <p>Best regards,<br>The Spa & Salon Africa Team</p>
       `,
         text: `
-        You're Registered! 🎉
-        
-        Hi ${data.name},
-        
-        Thank you for registering for our webinar "The Bottom Line: Spa, Salon & Barbershop Profitability"!
-        
-        Webinar Details:
-        Date: 20th & 21st April
-        Time: 6:00 PM - 8:00 PM EAT
-        Format: Online Webinar
-        Registration ID: ${data.registrationId}
-        Share this webinar: ${this.webinarPublicUrl}
-        
-        You'll receive webinar link and access instructions 24 hours before event.
-        
-        Get ready to transform your salon business!
-        
-        Best regards,
-        The Spa & Salon Africa Team
+You're Almost There!
+
+The Bottom Line webinar
+
+Hi ${data.name},
+
+We appreciate your interest in "The Bottom Line: Profitability webinar for spa, salon and barbershop owners".
+
+In order to complete your registration please go to "buy a ticket" on the link below:
+
+${this.webinarPublicUrl}
+
+Alternatively, you can pay for your ticket using the Paybill below:
+
+Paybill: ${this.webinarPaybill}
+Account Number: ${this.webinarPaybillAccount}
+Amount: KSh ${this.webinarAmountKes.toLocaleString()}
+
+Webinar Details:
+Date: 20th & 21st April
+Time: 6:00 PM - 8:00 PM EAT
+Format: Online Webinar
+Registration ID: ${data.registrationId}
+
+Share this webinar: ${this.webinarPublicUrl}
+
+You'll receive webinar link and access instructions 24 hours before the event.
+
+Get ready to transform your salon business!
+
+Best regards,
+The Spa & Salon Africa Team
       `,
       });
       console.log("✅ Webinar registration confirmation email sent");
